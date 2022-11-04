@@ -45,11 +45,12 @@
 <body>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
-   <p>Just text</p> <!--Просто текст для проверки-->
-   <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
-   <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
+   <p>Проверка Web App</p> <!--Просто текст для проверки-->
+   <!--<a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
+   <input id="input"/>
+   <p class="hint">* нажмите кнопку ниже чтобы отправить данные</p> <!--Просто текст-подсказка для проверки-->
    <!--<button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-   <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
+   <!--<button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
 </body>
 
 <script>
@@ -57,8 +58,8 @@
 
    tg.expand(); //расширяем на все окно  
 
-   tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
-   tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+   tg.MainButton.text = "Send data"; //изменяем текст кнопки 
+   //tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
    tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
    tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
    tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
@@ -88,7 +89,8 @@
    });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send"); 
+      let inputData = document.getElementById("input").value
+      tg.sendData(`отправил строку в бота: ${inputData}`); 
       //при клике на основную кнопку отправляем данные в строковом виде
    });
 
